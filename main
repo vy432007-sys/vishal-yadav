@@ -1,0 +1,123 @@
+// Import the necessary Flutter material design library
+import 'package:flutter/material.dart';
+
+// This is the main widget for the Home Screen
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Scaffold provides the basic structure of the visual interface
+    return Scaffold(
+      appBar: AppBar(
+        // The top bar of the app
+        backgroundColor: Colors.white,
+        elevation: 0, // No shadow for a flat look
+        title: const Text(
+          'Jan Swasthya Saathi',
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+        ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(20.0),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            alignment: Alignment.centerLeft,
+            child: const Text(
+              '📍 S.A.S. Nagar, Punjab',
+              style: TextStyle(color: Colors.black54),
+            ),
+          ),
+        ),
+        actions: [
+          // The notification bell icon on the right
+          IconButton(
+            icon: const Icon(Icons.notifications_none, color: Colors.black54),
+            onPressed: () {
+              // Action for notification icon tap
+            },
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        // Column arranges widgets vertically
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 20), // Adds some space from the top
+            
+            // The main card for navigation
+            Card(
+              elevation: 2.0,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Find Schemes Tailored for You',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Select your age and gender to see all the government benefits you are eligible for.',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                    ),
+                    const SizedBox(height: 24),
+                    // The main button to start the selection process
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+                      ),
+                      onPressed: () {
+                        // This would navigate to the Selector Screen
+                      },
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('START HERE', style: TextStyle(fontSize: 16)),
+                          SizedBox(width: 8),
+                          Icon(Icons.arrow_forward),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            
+            const SizedBox(height: 30), // More space
+            
+            // A secondary action button for searching
+            OutlinedButton.icon(
+              icon: const Icon(Icons.search),
+              label: const Text('Search Schemes by Name'),
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                foregroundColor: Colors.black54,
+                side: const BorderSide(color: Colors.grey),
+              ),
+              onPressed: () {
+                // Action for search button
+              },
+            ),
+          ],
+        ),
+      ),
+      // This is the bottom navigation bar (currently for display)
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.local_hospital_outlined), label: 'Hospitals'),
+          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Profile'),
+        ],
+        currentIndex: 0, // Highlights the 'Home' icon
+        onTap: (index) {
+          // Handles taps on the bottom navigation items
+        },
+      ),
+    );
+  }
+}
